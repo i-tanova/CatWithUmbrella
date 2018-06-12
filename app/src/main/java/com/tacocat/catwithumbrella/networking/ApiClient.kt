@@ -1,7 +1,7 @@
-package com.tacocat.catwithumbrella
+package com.tacocat.catwithumbrella.networking
 
+import com.tacocat.catwithumbrella.Constants
 import okhttp3.OkHttpClient
-import okhttp3.internal.tls.OkHostnameVerifier
 import retrofit2.Retrofit
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.converter.gson.GsonConverterFactory

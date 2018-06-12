@@ -7,4 +7,5 @@
     <color name="white">#FFFFFF</color>
     <color name="text_view_background">#FFFEEE</color>
     <color name="black">#000000</color>
+    <color name="location_name_text_color">#96968f</color>
 </resources>

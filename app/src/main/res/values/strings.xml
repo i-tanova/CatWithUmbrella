@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CatWithUmbrella</string>
+    <string name="do_i_need_umbrella">Do I need umbrella</string>
 </resources>

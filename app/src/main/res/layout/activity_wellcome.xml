@@ -2,33 +2,69 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/weatherContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/cat4"
-    tools:context="com.tacocat.catwithumbrella.WellcomeActivity">
+    android:background="@color/black"
+    tools:context="com.tacocat.catwithumbrella.WellcomeActivity"
+    tools:layout_editor_absoluteY="81dp">
 
     <TextView
-        android:id="@+id/current_location"
-        android:layout_width="368dp"
-        android:background="@color/text_view_background"
-        android:text="GORNA BANQ"
-        android:textColor="@color/black"
-        android:gravity="center"
+        android:id="@+id/locationTxtV"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="GORNA BANQ"
+        android:textColor="@color/location_name_text_color"
+        app:layout_constraintEnd_toEndOf="@+id/weatherTxtV"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/weatherTxtV"
+        app:layout_constraintTop_toBottomOf="@+id/weatherTxtV" />
 
     <TextView
         android:id="@+id/weatherTxtV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:background="@color/text_view_background"
-        android:textColor="@color/black"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/current_location" />
+        android:text="NO"
+        android:textColor="@color/location_name_text_color"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/dayTxtV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Today"
+        android:textColor="@color/location_name_text_color"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toTopOf="@+id/weatherTxtV"
+        app:layout_constraintEnd_toEndOf="@+id/weatherTxtV"
+        app:layout_constraintStart_toStartOf="@+id/weatherTxtV" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/do_i_need_umbrella"
+        android:textSize="24sp"
+        android:textColor="@color/location_name_text_color"
+        app:layout_constraintBottom_toTopOf="@+id/dayTxtV"
+        app:layout_constraintEnd_toEndOf="@+id/weatherTxtV"
+        app:layout_constraintStart_toStartOf="@+id/weatherTxtV"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
