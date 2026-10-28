@@ -40,9 +40,17 @@ class WeatherViewModel(app: Application) : AndroidViewModel(app) {
             try {
                 val client = LocationServices.getFusedLocationProviderClient(getApplication<Application>())
                 val request = CurrentLocationRequest.Builder().setPriority(Priority.PRIORITY_BALANCED_POWER_ACCURACY).build()
-                val location = client.getCurrentLocation(request, null).await() ?: return@launch
+                Timber.d("Requesting location")
+                val location = client.getCurrentLocation(request, null).await()
+                    ?: client.lastLocation.await()
+                if (location == null) {
+                    Timber.w("No location available; set a location in the emulator or enable device location")
+                    return@launch
+                }
+                Timber.d("Location: %s,%s", location.latitude, location.longitude)
                 _state.value = _state.value.copy(locationName = locationName(location))
                 val forecast = WeatherRepository.forecast(location.latitude, location.longitude)
+                Timber.d("Forecast loaded: %d entries", forecast.size)
                 _state.value = _state.value.copy(forecast = forecast)
             } catch (e: Exception) {
                 Timber.e(e, "Failed to load weather")
