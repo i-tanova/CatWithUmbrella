@@ -1,11 +1,6 @@
 package com.tacocat.catwithumbrella
 
-/**
- * Created by fallenstar on 12/2/17.
- */
-class Constants{
-    companion object {
-        val BASE_URL: String = "http://api.openweathermap.org"
-    }
-
+object Constants {
+    const val BASE_URL = "https://api.openweathermap.org"
+    const val API_KEY = "a9f07b3e58aa83b04d6299075004c1ce"
 }
