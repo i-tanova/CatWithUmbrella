@@ -24,11 +24,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import com.tacocat.catwithumbrella.Day
+import com.tacocat.catwithumbrella.DayForecast
 import com.tacocat.catwithumbrella.R
-import com.tacocat.catwithumbrella.WeatherRepository
 import com.tacocat.catwithumbrella.WeatherUiState
-import com.tacocat.catwithumbrella.networking.Weather
-import com.tacocat.catwithumbrella.networking.WeatherInfo
 import kotlinx.coroutines.delay
 
 @Composable
@@ -63,7 +61,7 @@ fun WeatherScreen(state: WeatherUiState) {
 
             AnimatedVisibility(visible = forecast != null) {
                 AnimatedContent(targetState = day, label = "day") { shownDay ->
-                    val answer = forecast?.let { WeatherRepository.willRain(it, shownDay) }
+                    val answer = forecast?.firstOrNull { it.day == shownDay }?.willRain
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
                         Text(
                             stringResource(
@@ -105,7 +103,11 @@ private fun WeatherScreenPreview() {
         WeatherScreen(
             WeatherUiState(
                 locationName = "Sofia, Bulgaria",
-                forecast = listOf(WeatherInfo(dt = System.currentTimeMillis() / 1000, weather = listOf(Weather(main = "Rain")))),
+                forecast = listOf(
+                    DayForecast(Day.Today, true),
+                    DayForecast(Day.Tomorrow, false),
+                    DayForecast(Day.Weekend, null),
+                ),
             )
         )
     }
