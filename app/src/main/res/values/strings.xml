@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">CatWithUmbrella</string>
     <string name="do_i_need_umbrella">Do I need umbrella</string>
+    <string name="day_today">Today</string>
+    <string name="day_tomorrow">Tomorrow</string>
+    <string name="day_weekend">Weekend</string>
+    <string name="answer_yes">YES</string>
+    <string name="answer_no">NO</string>
+    <string name="answer_not_sure">NOT SURE</string>
+    <string name="rain_channel">Rain</string>
+    <string name="rain_title">Bring an umbrella</string>
+    <string name="rain_text">Rain is expected tomorrow.</string>
 </resources>
