@@ -22,7 +22,12 @@ import java.util.Locale
 
 data class WeatherUiState(
     val locationName: String? = null,
-    val forecast: List<WeatherInfo>? = null,
+    val forecast: List<DayForecast>? = null,
+)
+
+data class DayForecast(
+    val day: Day,
+    val willRain: Boolean?,
 )
 
 class WeatherViewModel(app: Application) : AndroidViewModel(app) {
@@ -51,7 +56,10 @@ class WeatherViewModel(app: Application) : AndroidViewModel(app) {
                 _state.value = _state.value.copy(locationName = locationName(location))
                 val forecast = WeatherRepository.forecast(location.latitude, location.longitude)
                 Timber.d("Forecast loaded: %d entries", forecast.size)
-                _state.value = _state.value.copy(forecast = forecast)
+                val dailyForecast = Day.values().map { day ->
+                    DayForecast(day, WeatherRepository.willRain(forecast, day))
+                }
+                _state.value = _state.value.copy(forecast = dailyForecast)
             } catch (e: Exception) {
                 Timber.e(e, "Failed to load weather")
             } finally {
